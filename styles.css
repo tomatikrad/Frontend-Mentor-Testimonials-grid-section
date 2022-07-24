@@ -1,0 +1,256 @@
+:root {
+  --clr-primary-violet: 263 55% 52%;
+  --clr-primary-grayish: 217 19% 35%;
+  --clr-primary-blackish: 219 29% 14%;
+
+  --clr-neutral-100: 0 0% 100%;
+  --clr-neutral-200: 0 0% 81%;
+  --clr-neutral-300: 210 46% 95%;
+
+  --footer-txt-clr: hsl(var(--clr-primary-grayish));
+  --footer-link-clr: hsl(var(--clr-primary-blackish));
+
+  --fs-300: 0.6875rem;
+  --fs-400: 0.8125rem;
+  --fs-500: 1.25rem;
+}
+
+@font-face {
+  font-family: "Barlow Semi Condensed";
+  font-style: normal;
+  font-weight: 500;
+  src: local(""),
+    url("./fonts/barlow-semi-condensed-v14-latin-500.woff2") format("woff2"),
+    url("./fonts/barlow-semi-condensed-v14-latin-500.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Barlow Semi Condensed";
+  font-style: normal;
+  font-weight: 600;
+  src: local(""),
+    url("./fonts/barlow-semi-condensed-v14-latin-600.woff2") format("woff2"),
+    url("./fonts/barlow-semi-condensed-v14-latin-600.woff") format("woff");
+}
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+html,
+body {
+  height: 100%;
+}
+
+/* Set core body defaults */
+body {
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: hsl(var(--clr-neutral-300));
+
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  margin: 1rem auto;
+  padding: 0 2rem;
+  height: 100%;
+
+  display: grid;
+  place-items: center;
+}
+
+.testimonials-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-auto-columns: 1fr;
+  grid-template-areas:
+    "one"
+    "two"
+    "three"
+    "four"
+    "five";
+
+  width: min(95%, 70rem);
+  margin-inline: auto;
+}
+
+.testimonial {
+  font-size: var(--fs-400);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-neutral-200) / 0.25);
+}
+.testimonial:nth-child(1) {
+  grid-area: one;
+
+  background-color: hsl(var(--clr-primary-violet));
+  color: hsl(var(--clr-neutral-100));
+}
+.testimonial:nth-child(2) {
+  grid-area: two;
+
+  background-color: hsl(var(--clr-primary-grayish));
+  color: hsl(var(--clr-neutral-100));
+}
+.testimonial:nth-child(3) {
+  grid-area: three;
+
+  background-color: hsl(var(--clr-neutral-100));
+  color: hsl(var(--clr-primary-grayish));
+}
+.testimonial:nth-child(4) {
+  grid-area: four;
+
+  background-color: hsl(var(--clr-primary-blackish));
+  color: hsl(var(--clr-neutral-100));
+}
+.testimonial:nth-child(5) {
+  grid-area: five;
+
+  background-color: hsl(var(--clr-neutral-100));
+  color: hsl(var(--clr-primary-grayish));
+}
+
+.testimonial__header {
+  display: flex;
+  gap: 1rem;
+}
+
+.testimonial.quote {
+  background-image: url("./images/bg-pattern-quotation.svg");
+  background-repeat: no-repeat;
+  background-position: top right 10%;
+}
+
+.testimonial__avatar {
+  width: 1.75rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.border-avatar {
+  border: 2px solid #a775f1;
+}
+
+.testimonial .name {
+  font-size: var(--fs-400);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.testimonial .verified {
+  font-size: var(--fs-300);
+  opacity: 0.5;
+}
+.testimonial__title {
+  font-size: var(--fs-500);
+  line-height: 1.2;
+  margin-top: 1em;
+}
+.testimonial__content {
+  margin-top: 1em;
+  opacity: 0.7;
+}
+
+footer {
+  margin-top: auto;
+  padding-bottom: 3px;
+  color: var(--footer-txt-clr);
+}
+footer a {
+  color: var(--footer-link-clr);
+}
+
+@media screen and (min-width: 33em) {
+  .testimonials-grid {
+    grid-template-areas:
+      "one one"
+      "two three"
+      "five five"
+      "four four";
+  }
+}
+
+@media screen and (min-width: 38em) {
+  .testimonials-grid {
+    grid-template-areas:
+      "one one"
+      "two five"
+      "three five"
+      "four four";
+  }
+}
+
+@media screen and (min-width: 54em) {
+  .testimonials-grid {
+    grid-template-areas:
+      "one one two"
+      "five five five"
+      "three four four";
+  }
+}
+
+@media screen and (min-width: 75em) {
+  .testimonials-grid {
+    grid-template-areas:
+      "one one two five"
+      "three four four five";
+  }
+}
